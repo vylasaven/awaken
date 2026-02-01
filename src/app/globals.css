@@ -1,0 +1,306 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   AWAKEN - Consciousness Research Digital Poster
+   Global Styles
+   ============================================ */
+
+/* CSS Custom Properties for runtime theming */
+:root {
+  /* Background gradient: void to awareness */
+  --void: #0a0a0f;
+  --deep-space: #12121a;
+  --twilight: #1a1a2e;
+  --midnight: #16213e;
+
+  /* Accent: consciousness emergence */
+  --awareness-cyan: #4ecca3;
+  --consciousness-gold: #f0c419;
+  --integration-purple: #9d4edd;
+  --recursion-pink: #ff6b6b;
+
+  /* Text hierarchy */
+  --text-primary: #f0f0f0;
+  --text-secondary: #a0a0a0;
+  --text-accent: #4ecca3;
+}
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-void text-text-primary;
+    background: linear-gradient(180deg,
+      var(--void) 0%,
+      var(--deep-space) 25%,
+      var(--twilight) 50%,
+      var(--deep-space) 75%,
+      var(--void) 100%
+    );
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  /* Custom selection colors */
+  ::selection {
+    @apply bg-awareness-cyan/30 text-text-primary;
+  }
+
+  /* Smooth focus outlines */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-awareness-cyan;
+  }
+
+  /* Typography defaults */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans text-text-primary;
+  }
+
+  p {
+    @apply text-text-secondary;
+  }
+
+  a {
+    @apply text-awareness-cyan hover:text-awareness-cyan/80 transition-colors;
+  }
+
+  /* Code blocks */
+  code {
+    @apply font-mono text-sm bg-twilight/50 px-1.5 py-0.5 rounded;
+  }
+
+  pre {
+    @apply font-mono text-sm bg-twilight/50 p-4 rounded-xl overflow-x-auto;
+  }
+}
+
+/* Component utilities */
+@layer components {
+  /* Section container */
+  .section-container {
+    @apply max-w-content mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Card base styles */
+  .card {
+    @apply bg-twilight/30 backdrop-blur-sm border border-white/5 rounded-xl p-6;
+    @apply shadow-card hover:shadow-card-hover transition-all duration-300;
+  }
+
+  .card-interactive {
+    @apply card cursor-pointer;
+    @apply hover:border-awareness-cyan/30 hover:bg-twilight/50;
+  }
+
+  /* Glowing text effect */
+  .glow-text {
+    text-shadow: 0 0 20px rgba(78, 204, 163, 0.5),
+                 0 0 40px rgba(78, 204, 163, 0.3),
+                 0 0 60px rgba(78, 204, 163, 0.1);
+  }
+
+  .glow-text-gold {
+    text-shadow: 0 0 20px rgba(240, 196, 25, 0.5),
+                 0 0 40px rgba(240, 196, 25, 0.3),
+                 0 0 60px rgba(240, 196, 25, 0.1);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, var(--awareness-cyan), var(--consciousness-gold));
+  }
+
+  .gradient-text-purple {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, var(--integration-purple), var(--recursion-pink));
+  }
+
+  /* Animated underline */
+  .animated-underline {
+    @apply relative;
+  }
+
+  .animated-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-awareness-cyan transition-all duration-300;
+  }
+
+  .animated-underline:hover::after {
+    @apply w-full;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3;
+    @apply bg-awareness-cyan text-void font-semibold rounded-lg;
+    @apply hover:bg-awareness-cyan/90 active:bg-awareness-cyan/80;
+    @apply transition-all duration-200;
+    @apply focus-visible:ring-2 focus-visible:ring-awareness-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3;
+    @apply bg-transparent text-awareness-cyan font-semibold rounded-lg;
+    @apply border border-awareness-cyan/50;
+    @apply hover:bg-awareness-cyan/10 hover:border-awareness-cyan;
+    @apply transition-all duration-200;
+    @apply focus-visible:ring-2 focus-visible:ring-awareness-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2;
+    @apply bg-transparent text-text-secondary font-medium rounded-lg;
+    @apply hover:bg-white/5 hover:text-text-primary;
+    @apply transition-all duration-200;
+  }
+
+  /* Tag/badge styles */
+  .tag {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-full;
+    @apply bg-awareness-cyan/10 text-awareness-cyan border border-awareness-cyan/20;
+  }
+
+  .tag-gold {
+    @apply bg-consciousness-gold/10 text-consciousness-gold border-consciousness-gold/20;
+  }
+
+  .tag-purple {
+    @apply bg-integration-purple/10 text-integration-purple border-integration-purple/20;
+  }
+
+  /* Divider */
+  .divider {
+    @apply w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-8;
+  }
+
+  /* Tooltip */
+  .tooltip {
+    @apply absolute z-50 px-3 py-2 text-sm text-text-primary bg-twilight border border-white/10 rounded-lg shadow-lg;
+    @apply opacity-0 invisible transition-all duration-200;
+    @apply pointer-events-none;
+  }
+
+  .tooltip-trigger:hover .tooltip {
+    @apply opacity-100 visible;
+  }
+}
+
+/* Utility animations */
+@layer utilities {
+  /* Stagger animation delays */
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+  .animate-delay-700 { animation-delay: 700ms; }
+  .animate-delay-1000 { animation-delay: 1000ms; }
+
+  /* Gradient borders */
+  .gradient-border {
+    position: relative;
+    background: var(--twilight);
+    border-radius: 1rem;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--awareness-cyan), var(--integration-purple));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay {
+    position: relative;
+  }
+
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Scroll-triggered visibility */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+
+  .glass-dark {
+    @apply bg-black/20 backdrop-blur-md border border-white/5;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-void;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-twilight rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-awareness-cyan/30;
+}
+
+/* Print styles */
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
