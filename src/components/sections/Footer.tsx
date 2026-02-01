@@ -57,7 +57,11 @@ export function Footer() {
                 <Button variant="primary" size="lg">
                   Contact Us
                 </Button>
-                <Button variant="secondary" size="lg">
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  onClick={() => window.open("https://github.com/vylasaven/awaken", "_blank")}
+                >
                   View on GitHub
                 </Button>
                 <Button variant="ghost" size="lg">
